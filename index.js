@@ -25,12 +25,22 @@ router
   })
   .resolve();
 
-fetch("http://localhost:5552/api/hello")
-  .then((response) => response.text())
-  .then((data) => console.log(data));
+const userJWTToken = JSON.parse(localStorage.getItem("user"));
+console.log(userJWTToken);
 
-/*
-fetch("http://localhost:5552/", {
+fetch("http://localhost:5552/api/hello", {
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+    // attaching the JWT token to the request
+    Authorization: "Bearer " + userJWTToken.accessToken,
+  },
+})
+  .then((response) => response.text())
+  .then((data) => {
+    console.log(data);
+  });
+
+fetch("http://localhost:5552/api/auth/signin", {
   method: "POST",
   mode: "cors", // no-cors, *cors, same-origin
   headers: {
@@ -43,6 +53,8 @@ fetch("http://localhost:5552/", {
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    if (data.accessToken) {
+      // Saving the JWT to local storage
+      localStorage.setItem("user", JSON.stringify(data));
+    }
   });
-*/
