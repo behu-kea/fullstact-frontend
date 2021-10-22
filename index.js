@@ -24,3 +24,25 @@ router
     },
   })
   .resolve();
+
+fetch("http://localhost:5552/api/hello")
+  .then((response) => response.text())
+  .then((data) => console.log(data));
+
+/*
+fetch("http://localhost:5552/", {
+  method: "POST",
+  mode: "cors", // no-cors, *cors, same-origin
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    username: "pesekt",
+    password: "12345678",
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+*/
