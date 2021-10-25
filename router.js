@@ -4,7 +4,7 @@ import renderUser from "./pages/user/user.js";
 import renderLogin from "./pages/login/login.js";
 
 export default function () {
-  window.router = new Navigo("/fullstact-frontend", { hash: true });
+  window.router = new Navigo(window.root, { hash: true });
 
   router
     .on({
