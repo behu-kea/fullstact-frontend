@@ -3,6 +3,9 @@ import renderAbout from "./pages/about/about.js";
 import renderUser from "./pages/user/user.js";
 import renderLogin from "./pages/login/login.js";
 
+// "http://localhost:5552/api/hello"
+window.apiUrl = "https://tomas-order-site.herokuapp.com";
+
 const githubRepoName = "/fullstact-frontend";
 const isLocalhost =
   window.location.host.indexOf("127.0.0.1") != -1 ||
@@ -31,7 +34,7 @@ router
 
 const userJWTToken = JSON.parse(localStorage.getItem("user"));
 if (userJWTToken) {
-  fetch("http://localhost:5552/api/hello", {
+  fetch(window.apiUrl, {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       // attaching the JWT token to the request
