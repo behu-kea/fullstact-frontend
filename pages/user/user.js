@@ -8,7 +8,7 @@ export default (userId) => {
       .then((aboutHtml) => {
         content.innerHTML = aboutHtml;
 
-        const h1 = document.querySelector("h1");
+        const h1 = document.querySelector("h2");
         h1.innerText = `${userId}'s user page`;
 
         fetch(`${window.apiUrl}/api/orders`, {
@@ -19,8 +19,15 @@ export default (userId) => {
           },
         })
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
+          .then((orders) => {
+            const ulHtml = "";
+            orders.forEach((order) => {
+              ul += `<li>
+                <span>Customer id: ${order.customerId}</span>
+                <span>Customer comments: ${order.comments}</span>
+              </li>`;
+            });
+            document.querySelector("ul.orders").innerHTML = ulHtml;
           });
       });
   } else {

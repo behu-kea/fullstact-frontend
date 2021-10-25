@@ -31,18 +31,3 @@ router
     },
   })
   .resolve();
-
-const userJWTToken = JSON.parse(localStorage.getItem("user"));
-if (userJWTToken) {
-  fetch(`${window.apiUrl}/api/hello`, {
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      // attaching the JWT token to the request
-      Authorization: "Bearer " + userJWTToken.accessToken,
-    },
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log(data);
-    });
-}
