@@ -1,13 +1,14 @@
 import renderMain from "./pages/main/main.js";
 import renderAbout from "./pages/about/about.js";
 import renderUser from "./pages/user/user.js";
+import renderLogin from "./pages/login/login.js";
 
 const githubRepoName = "/frontend-structure";
 const isLocalhost =
   window.location.host.indexOf("127.0.0.1") != -1 ||
   window.location.host.indexOf("localhost") != -1;
 const root = isLocalhost ? "/" : githubRepoName;
-const router = new Navigo(root, { hash: true });
+window.router = new Navigo(root, { hash: true });
 
 router
   .on({
@@ -19,6 +20,9 @@ router
     about: () => {
       renderAbout();
     },
+    login: () => {
+      renderLogin();
+    },
     "/user/:id/": ({ data, params }) => {
       renderUser(data.id);
     },
@@ -26,8 +30,6 @@ router
   .resolve();
 
 const userJWTToken = JSON.parse(localStorage.getItem("user"));
-console.log(userJWTToken);
-
 fetch("http://localhost:5552/api/hello", {
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -38,23 +40,4 @@ fetch("http://localhost:5552/api/hello", {
   .then((response) => response.text())
   .then((data) => {
     console.log(data);
-  });
-
-fetch("http://localhost:5552/api/auth/signin", {
-  method: "POST",
-  mode: "cors", // no-cors, *cors, same-origin
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    username: "pesekt",
-    password: "12345678",
-  }),
-})
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.accessToken) {
-      // Saving the JWT to local storage
-      localStorage.setItem("user", JSON.stringify(data));
-    }
   });
