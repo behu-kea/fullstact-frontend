@@ -9,7 +9,6 @@ export default () => {
       const form = document.querySelector("form");
       form.addEventListener("click", (event) => {
         event.preventDefault();
-        console.log(2);
 
         fetch(`${window.apiUrl}/api/auth/signin`, {
           method: "POST",
@@ -26,7 +25,6 @@ export default () => {
           .then((data) => {
             if (data.accessToken) {
               // Saving the JWT to local storage
-              console.log(data);
               localStorage.setItem("user", JSON.stringify(data));
               window.router.navigate(`/user/${data.id}`);
             }
