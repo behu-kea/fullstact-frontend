@@ -5,5 +5,6 @@ export default () => {
     .then((response) => response.text())
     .then((mainHtml) => {
       content.innerHTML = mainHtml;
+      window.router.updateLinks;
     });
 };
