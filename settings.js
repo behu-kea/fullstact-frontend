@@ -1,5 +1,5 @@
 export default function () {
-  const githubRepoName = "/fullstact-frontend";
+  const githubRepoName = "fullstact-frontend";
   const isLocalhost =
     window.location.host.indexOf("127.0.0.1") != -1 ||
     window.location.host.indexOf("localhost") != -1;
