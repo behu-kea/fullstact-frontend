@@ -23,8 +23,8 @@ export default (userId) => {
             let ulHtml = "";
             orders.forEach((order) => {
               ulHtml += `<li>
-                <span>Customer id: ${order.customerId}</span>
-                <span>Customer comments: ${order.comments}</span>
+                <div>Id: ${order.customerId}</div>
+                <div>Comments: ${order.comments}</div>
               </li>`;
             });
             document.querySelector("ul.orders").innerHTML = ulHtml;
