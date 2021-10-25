@@ -30,14 +30,16 @@ router
   .resolve();
 
 const userJWTToken = JSON.parse(localStorage.getItem("user"));
-fetch("http://localhost:5552/api/hello", {
-  headers: {
-    "Content-type": "application/json; charset=UTF-8",
-    // attaching the JWT token to the request
-    Authorization: "Bearer " + userJWTToken.accessToken,
-  },
-})
-  .then((response) => response.text())
-  .then((data) => {
-    console.log(data);
-  });
+if (userJWTToken) {
+  fetch("http://localhost:5552/api/hello", {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      // attaching the JWT token to the request
+      Authorization: "Bearer " + userJWTToken.accessToken,
+    },
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+    });
+}
