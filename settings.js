@@ -4,7 +4,7 @@ export default function () {
     window.location.host.indexOf("127.0.0.1") != -1 ||
     window.location.host.indexOf("localhost") != -1;
 
-  const localApiUrl = "http://localhost:5552/api/hello";
+  const localApiUrl = "http://localhost:5552";
   const prodApiUrl = "https://tomas-order-site.herokuapp.com";
 
   // when fetching data from the api we need to know what the url is
@@ -13,4 +13,11 @@ export default function () {
 
   // The root is for the navigo router. It need to know the root route
   window.root = isLocalhost ? "/" : githubRepoName;
+
+  if (isLocalhost) {
+    const div = document.createElement("div");
+    div.innerHTML = `DEVELOPMENT SITE!`;
+    document.body.appendChild(div);
+    console.log(33);
+  }
 }
