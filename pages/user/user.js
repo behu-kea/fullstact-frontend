@@ -11,7 +11,7 @@ export default (userId) => {
         const h1 = document.querySelector("h1");
         h1.innerText = `${userId}'s user page`;
 
-        fetch(window.apiUrl, {
+        fetch(`${window.apiUrl}/api/orders`, {
           headers: {
             "Content-type": "application/json; charset=UTF-8",
             // attaching the JWT token to the request

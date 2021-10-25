@@ -34,7 +34,7 @@ router
 
 const userJWTToken = JSON.parse(localStorage.getItem("user"));
 if (userJWTToken) {
-  fetch(window.apiUrl, {
+  fetch(`${window.apiUrl}/api/hello`, {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       // attaching the JWT token to the request

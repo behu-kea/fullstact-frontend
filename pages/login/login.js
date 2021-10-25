@@ -11,7 +11,7 @@ export default () => {
         event.preventDefault();
         console.log(2);
 
-        fetch(window.apiUrl, {
+        fetch(`${window.apiUrl}/api/auth/signin`, {
           method: "POST",
           mode: "cors", // no-cors, *cors, same-origin
           headers: {
