@@ -22,7 +22,7 @@ export default (userId) => {
           .then((orders) => {
             const ulHtml = "";
             orders.forEach((order) => {
-              ul += `<li>
+              ulHtml += `<li>
                 <span>Customer id: ${order.customerId}</span>
                 <span>Customer comments: ${order.comments}</span>
               </li>`;
