@@ -3,7 +3,7 @@ import renderAbout from "./pages/about/about.js";
 import renderUser from "./pages/user/user.js";
 import renderLogin from "./pages/login/login.js";
 
-const githubRepoName = "/frontend-structure";
+const githubRepoName = "/fullstact-frontend";
 const isLocalhost =
   window.location.host.indexOf("127.0.0.1") != -1 ||
   window.location.host.indexOf("localhost") != -1;
