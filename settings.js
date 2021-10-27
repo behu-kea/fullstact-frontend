@@ -9,11 +9,4 @@ export default function () {
   // when fetching data from the api we need to know what the url is
   // It is different if you are developing locally or have the site deployed
   window.apiUrl = isLocalhost ? localApiUrl : prodApiUrl;
-
-  if (isLocalhost) {
-    const div = document.createElement("div");
-    div.innerHTML = `DEVELOPMENT SITE!`;
-    document.body.appendChild(div);
-    console.log(33);
-  }
 }
