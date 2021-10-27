@@ -2,9 +2,10 @@
 
 This repo is supposed to provide as a boilerplate for setting up routing, authentication and interaction with an api.
 
-The code for the backend api can be found here: https://github.com/behu-kea/tomas-order-site
+The frontend is running here: https://flawless-branch.surge.sh
+The backend is running here: https://tomas-order-site.herokuapp.com/
 
-It is hosted at Heroku at this url: https://tomas-order-site.herokuapp.com/
+The code for the backend api can be found here: https://github.com/behu-kea/tomas-order-site
 
 ## Running the project
 
@@ -17,7 +18,7 @@ In the `settings.js`
 - Update the variable `localApiUrl` to be the url for where the project mentioned above is running locally
 - Update the variable `prodApiUrl` to be the url for where the project mentioned above is running in production
 
-To run the project locally open `index.html` with Liver Server
+To run the project locally click the `Go live` button in the bottom right corner. This will open the project with Liver Server. The url should be http://127.0.0.1:5500/ (depending on the port)
 
 ## Deploying
 
