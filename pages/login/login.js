@@ -3,8 +3,8 @@ export default () => {
 
   return fetch("./pages/login/login.html")
     .then((response) => response.text())
-    .then((mainHtml) => {
-      content.innerHTML = mainHtml;
+    .then((loginHtml) => {
+      content.innerHTML = loginHtml;
 
       const form = document.querySelector("form");
       form.addEventListener("click", (event) => {

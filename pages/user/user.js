@@ -5,8 +5,8 @@ export default (userId) => {
 
     fetch("./pages/user/user.html")
       .then((response) => response.text())
-      .then((aboutHtml) => {
-        content.innerHTML = aboutHtml;
+      .then((userHtml) => {
+        content.innerHTML = userHtml;
 
         const h1 = document.querySelector("h2");
         h1.innerText = `${userId}'s user page`;
