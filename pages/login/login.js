@@ -12,7 +12,7 @@ export default () => {
 
 function handleLoginFunctionality() {
   const form = document.querySelector("form");
-  form.addEventListener("click", (event) => {
+  form.addEventListener("submit", (event) => {
     // Make sure the form is not submitted
     event.preventDefault();
 
