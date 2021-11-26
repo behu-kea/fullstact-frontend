@@ -6,29 +6,35 @@ export default () => {
     .then((loginHtml) => {
       content.innerHTML = loginHtml;
 
-      const form = document.querySelector("form");
-      form.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        fetch(`${window.apiUrl}/api/auth/signin`, {
-          method: "POST",
-          mode: "cors", // no-cors, *cors, same-origin
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: document.querySelector("input.username").value,
-            password: document.querySelector("input.password").value,
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.accessToken) {
-              // Saving the JWT to local storage
-              localStorage.setItem("user", JSON.stringify(data));
-              window.router.navigate(`/user/${data.id}`);
-            }
-          });
-      });
+      handleLoginFunctionality();
     });
 };
+
+function handleLoginFunctionality() {
+  const form = document.querySelector("form");
+  form.addEventListener("click", (event) => {
+    // Make sure the form is not submitted
+    event.preventDefault();
+
+    fetch(`${window.apiUrl}/api/auth/signin`, {
+      method: "POST",
+      mode: "cors", // no-cors, *cors, same-origin
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: document.querySelector("input.username").value,
+        password: document.querySelector("input.password").value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.accessToken) {
+          // Saving the JWT to local storage
+          localStorage.setItem("user", JSON.stringify(data));
+          // navigating to the users route. Using the global window.router
+          window.router.navigate(`/user/${data.id}`);
+        }
+      });
+  });
+}

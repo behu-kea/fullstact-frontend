@@ -8,8 +8,8 @@ export default (userId) => {
       .then((userHtml) => {
         content.innerHTML = userHtml;
 
-        const h1 = document.querySelector("h2");
-        h1.innerText = `${userId}'s user page`;
+        const h2 = document.querySelector("h2");
+        h2.innerText = `${userId}'s user page`;
 
         fetch(`${window.apiUrl}/api/orders`, {
           headers: {
@@ -19,18 +19,21 @@ export default (userId) => {
           },
         })
           .then((response) => response.json())
-          .then((orders) => {
-            let ulHtml = "";
-            orders.forEach((order) => {
-              ulHtml += `<li>
-                <div>Id: ${order.customerId}</div>
-                <div>Comments: ${order.comments}</div>
-              </li>`;
-            });
-            document.querySelector("ul.orders").innerHTML = ulHtml;
-          });
+          // Yes we can do like this. The data from the api is the argument to renderOrders!
+          .then(renderOrders);
       });
   } else {
     alert("Please login to access this site");
   }
 };
+
+function renderOrders(orders) {
+  let ulHtml = "";
+  orders.forEach((order) => {
+    ulHtml += `<li>
+      <div>Id: ${order.customerId}</div>
+      <div>Comments: ${order.comments}</div>
+    </li>`;
+  });
+  document.querySelector("ul.orders").innerHTML = ulHtml;
+}
