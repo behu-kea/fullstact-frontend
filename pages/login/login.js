@@ -18,7 +18,6 @@ function handleLoginFunctionality() {
 
     fetch(`${window.apiUrl}/api/auth/signin`, {
       method: "POST",
-      mode: "cors", // no-cors, *cors, same-origin
       headers: {
         "Content-Type": "application/json",
       },
